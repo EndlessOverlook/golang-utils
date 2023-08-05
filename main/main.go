@@ -5,8 +5,6 @@ import (
 	"golang-utils/age-utils"
 	"golang-utils/gadget"
 	"golang-utils/name_utils"
-	"golang-utils/numberutils"
-	"golang-utils/stringutils"
 	"golang-utils/timeutils"
 	"math"
 	"strconv"
@@ -74,15 +72,30 @@ func main() {
 
 	// TryOut(gadget.TapeRecorder{})
 
-	fmt.Println("逗号在\"码神来了,码神bye bye\"中的位置是: ", stringutils.SearchString("码神来了,码神bye bye", ","))
+	// fmt.Println("逗号在\"码神来了,码神bye bye\"中的位置是: ", stringutils.SearchString("码神来了,码神bye bye", ","))
 
-	stringNumber := "5566"
-	pureNumber, _ := stringutils.Switch2Int(stringNumber)
-	fmt.Println("字符串\"", stringNumber, "\"转换为整型数字: ", pureNumber)
+	// stringNumber := "5566"
+	// pureNumber, _ := stringutils.Switch2Int(stringNumber)
+	// fmt.Println("字符串\"", stringNumber, "\"转换为整型数字: ", pureNumber)
 
-	num := 7788
-	numString := numberutils.Int2String(num)
-	fmt.Printf("数字%d转换为字符串: %s\n", num, numString)
+	// num := 7788
+	// numString := numberutils.Int2String(num)
+	// fmt.Printf("数字%d转换为字符串: %s\n", num, numString)
+
+	// arr := [...]int{1, 2, 3, 7: 113}
+	// slice := arr[2:2]
+	// fmt.Println("测试切片起始位置和结束位置相同是否会编译报错: ", slice)
+
+	// var strList []string
+	// strList = append(strList, "码神之路")
+	// fmt.Println(strList)
+
+	// a := make([]int, 2)
+	// b := make([]int, 2, 10)
+	// fmt.Println(a, b)
+
+	a, b, _ := namedReturnValueFunction()
+	fmt.Println(a, b)
 
 }
 
@@ -94,4 +107,14 @@ func maximumNumber(numbers ...float64) float64 {
 		}
 	}
 	return max
+}
+
+func namedReturnValueFunction() (names []string, m map[string]string, i int) {
+	names = make([]string, 10)
+	names = append(names, "First item in slice")
+
+	m = make(map[string]string, 20)
+	m["lkl"] = "handsome"
+
+	return
 }
