@@ -57,20 +57,21 @@ func TryOut(player Player) {
 }
 
 func main() {
-	//verifyGolangPackageName()
-	//iterateArray()
-	//calculateAverage()
+	// verifyGolangPackageName()
+	// iterateArray()
+	// calculateAverage()
 
-	//fmt.Println(maximumNumber(71.8, 56.2, 89.5))
-	//fmt.Println(maximumNumber(90.7, 89.7, 98.5, 92.3))
+	// fmt.Println(maximumNumber(71.8, 56.2, 89.5))
+	// fmt.Println(maximumNumber(90.7, 89.7, 98.5, 92.3))
 
-	//mixedTape := []string{"Jessie's Girl", "Whip it", "9 to 5"}
-	//var player Player = gadget.TapePlayer{}
-	//playList(player, mixedTape)
-	//player = gadget.TapeRecorder{}
-	//playList(player, mixedTape)
+	// mixedTape := []string{"Jessie's Girl", "Whip it", "9 to 5"}
+	// var player Player = gadget.TapePlayer{}
+	// playList(player, mixedTape)
+	// player = gadget.TapeRecorder{}
+	// playList(player, mixedTape)
 
-	TryOut(gadget.TapeRecorder{})
+	// TryOut(gadget.TapeRecorder{})
+
 }
 
 func maximumNumber(numbers ...float64) float64 {
