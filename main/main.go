@@ -5,6 +5,7 @@ import (
 	"golang-utils/age-utils"
 	"golang-utils/gadget"
 	"golang-utils/name_utils"
+	"golang-utils/numberutils"
 	"golang-utils/stringutils"
 	"golang-utils/timeutils"
 	"math"
@@ -74,9 +75,15 @@ func main() {
 	// TryOut(gadget.TapeRecorder{})
 
 	fmt.Println("逗号在\"码神来了,码神bye bye\"中的位置是: ", stringutils.SearchString("码神来了,码神bye bye", ","))
+
 	stringNumber := "5566"
 	pureNumber, _ := stringutils.Switch2Int(stringNumber)
 	fmt.Println("字符串\"", stringNumber, "\"转换为整型数字: ", pureNumber)
+
+	num := 7788
+	numString := numberutils.Int2String(num)
+	fmt.Printf("数字%d转换为字符串: %s\n", num, numString)
+
 }
 
 func maximumNumber(numbers ...float64) float64 {
