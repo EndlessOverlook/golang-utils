@@ -1,6 +1,9 @@
 package channelutils
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 func TestChannel1() {
 	c := make(chan int)
@@ -45,4 +48,14 @@ func TestChannel2() {
 	for i := range ch2 { // 通道关闭后会退出for range循环
 		fmt.Println(i)
 	}
+}
+
+func TestSelect1(ch chan string) {
+	time.Sleep(time.Second * 5)
+	ch <- "test1"
+}
+
+func TestSelect2(ch chan string) {
+	time.Sleep(time.Second * 2)
+	ch <- "test2"
 }
