@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"golang-utils/age-utils"
+	"golang-utils/channelutils"
 	"golang-utils/gadget"
 	"golang-utils/name_utils"
 	"golang-utils/timeutils"
@@ -94,9 +95,48 @@ func main() {
 	// b := make([]int, 2, 10)
 	// fmt.Println(a, b)
 
-	a, b, _ := namedReturnValueFunction()
-	fmt.Println(a, b)
+	// a, b, _ := namedReturnValueFunction()
+	// fmt.Println(a, b)
 
+	// var whatever = [5]int{1, 2, 3, 4, 5}
+	// for _, v := range whatever {
+	// 	// v := v
+	// 	defer func() {
+	// 		fmt.Println("Variable v in defer: ", v)
+	// 	}()
+	// 	fmt.Println("Variable v in loop: ", v)
+	// }
+
+	// vec21 := Vec2{1.0, 2.0}
+	// vec22 := Vec2{3.0, 4.0}
+	// vec21.Add(vec22)
+
+	// go func(s string) {
+	// 	for i := 0; i < 2; i++ {
+	// 		fmt.Println(s)
+	// 	}
+	// }("world")
+	// // 主协程
+	// for i := 0; i < 2; i++ {
+	// 	// 切一下，再次分配任务
+	// 	runtime.Gosched()
+	// 	fmt.Println("hello")
+	// }
+
+	channelutils.TestChannel1()
+
+}
+
+type Vec2 struct {
+	X, Y float32
+}
+
+// Add 加
+func (v Vec2) Add(other Vec2) Vec2 {
+	return Vec2{
+		v.X + other.X,
+		v.Y + other.Y,
+	}
 }
 
 func maximumNumber(numbers ...float64) float64 {
