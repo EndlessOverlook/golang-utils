@@ -123,7 +123,7 @@ func main() {
 	// 	fmt.Println("hello")
 	// }
 
-	channelutils.TestChannel1()
+	channelutils.TestChannel2()
 
 }
 
