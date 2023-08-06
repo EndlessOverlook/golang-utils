@@ -3,13 +3,11 @@ package main
 import (
 	"fmt"
 	"golang-utils/age-utils"
-	"golang-utils/channelutils"
 	"golang-utils/gadget"
 	"golang-utils/name_utils"
 	"golang-utils/timeutils"
 	"math"
 	"strconv"
-	"time"
 )
 
 // 验证包名是否可以带中横线和下划线
@@ -125,20 +123,22 @@ func main() {
 	// }
 
 	// channelutils.TestChannel2()
-	// 两个通道
-	output1 := make(chan string)
-	output2 := make(chan string)
-	// 跑两个子协程，写数据
-	go channelutils.TestSelect1(output1)
-	go channelutils.TestSelect2(output2)
-	// 使用select监听
-	select {
-	case s1 := <-output1:
-		fmt.Println("s1=", s1)
-	case s2 := <-output2:
-		fmt.Println("s2=", s2)
-	}
-	time.Sleep(time.Second * 6)
+
+	// // 两个通道
+	// output1 := make(chan string)
+	// output2 := make(chan string)
+	// // 跑两个子协程，写数据
+	// go channelutils.TestSelect1(output1)
+	// go channelutils.TestSelect2(output2)
+	// // 使用select监听
+	// select {
+	// case s1 := <-output1:
+	// 	fmt.Println("s1=", s1)
+	// case s2 := <-output2:
+	// 	fmt.Println("s2=", s2)
+	// }
+	// time.Sleep(time.Second * 6)
+
 }
 
 type Vec2 struct {
