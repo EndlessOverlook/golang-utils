@@ -1,4 +1,4 @@
-package jiulaw
+package ninelaw
 
 import (
 	"bytes"
@@ -11,7 +11,7 @@ import (
 )
 
 // 生成九品签名
-func GenerateJiulawSign(appKey string, securityKey string, timestamp string, random string) {
+func GenerateNinelawSign(appKey string, securityKey string, timestamp string, random string) {
 	parameterSlice := make([]string, 4)
 	parameterSlice = append(parameterSlice, appKey)
 	parameterSlice = append(parameterSlice, securityKey)
