@@ -11,7 +11,7 @@ import (
 )
 
 // 生成九品签名
-func GenerateJiulawSign(appKey string, securityKey string, timestamp string, random string) string {
+func GenerateJiulawSign(appKey string, securityKey string, timestamp string, random string) {
 	parameterSlice := make([]string, 4)
 	parameterSlice = append(parameterSlice, appKey)
 	parameterSlice = append(parameterSlice, securityKey)
@@ -24,7 +24,6 @@ func GenerateJiulawSign(appKey string, securityKey string, timestamp string, ran
 	fmt.Printf("timestamp: [%s]\n", timestamp)
 	fmt.Printf("random: [%s]\n", random)
 	fmt.Printf("sign: [%s]\n", encryptedParameters)
-	return encryptedParameters
 }
 
 // 随机生成"英文字母、数字形式"的字符串
