@@ -4,10 +4,12 @@ import (
 	"fmt"
 	"golang-utils/age-utils"
 	"golang-utils/gadget"
+	"golang-utils/jiulaw"
 	"golang-utils/name_utils"
 	"golang-utils/timeutils"
 	"math"
 	"strconv"
+	"time"
 )
 
 // 验证包名是否可以带中横线和下划线
@@ -139,6 +141,7 @@ func main() {
 	// }
 	// time.Sleep(time.Second * 6)
 
+	jiulaw.GenerateJiulawSign("6Tzuo9wQ5O", "Rx42VF95ZvILq7FtvVh8P1zTJOqWIoOW", strconv.FormatInt(time.Now().UnixMilli(), 10), jiulaw.GenerateRandom(6))
 }
 
 type Vec2 struct {
