@@ -25,12 +25,10 @@ func GenerateNinelawOpenAPISecurityParameters(appKey string, securityKey string,
 	parameters := strings.Join(parameterSlice, "")
 	encryptedParameters := encryptionutils.EncryptWithSha256(parameters)
 	sugar.Info("Ninelaw OpenAPI Security Parameters:")
-	sugar.Info("========================================")
-	sugar.Infow("[appKey & securityKey]", zap.String("appKey", appKey), zap.String("securityKey", securityKey))
-	sugar.Info("========================================")
-	sugar.Infow("[timestamp]", zap.String("timestamp", timestamp))
-	sugar.Infow("[random]", zap.String("random", random))
-	sugar.Infow("[sign]", zap.String("sign", encryptedParameters))
+	sugar.Infow("应用Key和私钥Key", zap.String("appKey", appKey), zap.String("securityKey", securityKey))
+	sugar.Infow("时间戳", zap.String("timestamp", timestamp))
+	sugar.Infow("随机数", zap.String("random", random))
+	sugar.Infow("签名", zap.String("sign", encryptedParameters))
 }
 
 // 随机生成"英文字母、数字形式"的字符串
