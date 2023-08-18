@@ -135,7 +135,7 @@ func main() {
 	// }
 	// time.Sleep(time.Second * 6)
 
-	ninelaw.GenerateNinelawSign("6Tzuo9wQ5O", "Rx42VF95ZvILq7FtvVh8P1zTJOqWIoOW", strconv.FormatInt(time.Now().UnixMilli(), 10), ninelaw.GenerateRandom(6))
+	ninelaw.GenerateNinelawOpenAPISecurityParameters("6Tzuo9wQ5O", "Rx42VF95ZvILq7FtvVh8P1zTJOqWIoOW", strconv.FormatInt(time.Now().UnixMilli(), 10), ninelaw.GenerateRandom(6))
 }
 
 //type Vec2 struct {

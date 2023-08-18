@@ -2,7 +2,7 @@ package ninelaw
 
 import (
 	"bytes"
-	"fmt"
+	"go.uber.org/zap"
 	"golang-utils/encryptionutils"
 	"math/rand"
 	"sort"
@@ -11,7 +11,11 @@ import (
 )
 
 // 生成九品签名
-func GenerateNinelawSign(appKey string, securityKey string, timestamp string, random string) {
+func GenerateNinelawOpenAPISecurityParameters(appKey string, securityKey string, timestamp string, random string) {
+	logger, _ := zap.NewProduction()
+	defer logger.Sync()
+	sugar := logger.Sugar()
+
 	parameterSlice := make([]string, 4)
 	parameterSlice = append(parameterSlice, appKey)
 	parameterSlice = append(parameterSlice, securityKey)
@@ -20,10 +24,13 @@ func GenerateNinelawSign(appKey string, securityKey string, timestamp string, ra
 	sort.Strings(parameterSlice)
 	parameters := strings.Join(parameterSlice, "")
 	encryptedParameters := encryptionutils.EncryptWithSha256(parameters)
-	fmt.Printf("Jiulaw Parameters=====appKey: [%s], securityKey: [%s]\n\n", appKey, securityKey)
-	fmt.Printf("timestamp: [%s]\n", timestamp)
-	fmt.Printf("random: [%s]\n", random)
-	fmt.Printf("sign: [%s]\n", encryptedParameters)
+	sugar.Info("Ninelaw OpenAPI Security Parameters:")
+	sugar.Info("========================================")
+	sugar.Infow("[appKey & securityKey]", zap.String("appKey", appKey), zap.String("securityKey", securityKey))
+	sugar.Info("========================================")
+	sugar.Infow("[timestamp]", zap.String("timestamp", timestamp))
+	sugar.Infow("[random]", zap.String("random", random))
+	sugar.Infow("[sign]", zap.String("sign", encryptedParameters))
 }
 
 // 随机生成"英文字母、数字形式"的字符串
