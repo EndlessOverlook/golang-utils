@@ -5,7 +5,6 @@ import (
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 	"golang-utils/encryptionutils"
-	"gopkg.in/natefinch/lumberjack.v2"
 	"math/rand"
 	"os"
 	"sort"
@@ -38,25 +37,26 @@ func GenerateNinelawOpenAPISecurityParameters(keyType byte, timestamp string, ra
 		EncodeName:     zapcore.FullNameEncoder,
 	}
 
-	writeSyncer := zapcore.AddSync(&lumberjack.Logger{
-		// 日志名称
-		Filename: "ninelaw-sign.log",
-		// 日志大小限制，单位MB
-		MaxSize: 100,
-		// 历史日志文件保留天数
-		MaxAge: 30,
-		// 最大保留历史日志数量
-		MaxBackups: 10,
-		// 本地时区
-		LocalTime: true,
-		// 历史日志文件压缩标识
-		Compress: false,
-	})
+	// writeSyncer := zapcore.AddSync(&lumberjack.Logger{
+	// 	// 日志名称
+	// 	Filename: "ninelaw-sign.log",
+	// 	// 日志大小限制，单位MB
+	// 	MaxSize: 100,
+	// 	// 历史日志文件保留天数
+	// 	MaxAge: 30,
+	// 	// 最大保留历史日志数量
+	// 	MaxBackups: 10,
+	// 	// 本地时区
+	// 	LocalTime: true,
+	// 	// 历史日志文件压缩标识
+	// 	Compress: false,
+	// })
 
-	logFileCore := zapcore.NewCore(zapcore.NewJSONEncoder(encoderConfig), writeSyncer, atomicLevel)
-	consoleCore := zapcore.NewCore(zapcore.NewConsoleEncoder(encoderConfig), zapcore.AddSync(os.Stdout), atomicLevel)
-	tee := zapcore.NewTee(logFileCore, consoleCore)
-	logger := zap.New(tee)
+	core := zapcore.NewTee(
+		zapcore.NewCore(zapcore.NewConsoleEncoder(encoderConfig), zapcore.AddSync(os.Stdout), atomicLevel),
+		// zapcore.NewCore(zapcore.NewJSONEncoder(encoderConfig), writeSyncer, atomicLevel),
+	)
+	logger := zap.New(core)
 	sugar := logger.Sugar()
 	defer logger.Sync()
 
@@ -87,7 +87,7 @@ func GenerateNinelawOpenAPISecurityParameters(keyType byte, timestamp string, ra
 	sugar.Infow("[02]", zap.String("timestamp", timestamp))
 	sugar.Infow("[03]", zap.String("random", random))
 	sugar.Infow("[04]", zap.String("sign", encryptedParameters))
-	sugar.Info("==========================================================================================")
+	sugar.Info("======================================================================")
 }
 
 // 随机生成"英文字母、数字形式"的字符串
