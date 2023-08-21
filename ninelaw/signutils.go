@@ -40,7 +40,7 @@ func GenerateNinelawOpenAPISecurityParameters(keyType byte, timestamp string, ra
 
 	writeSyncer := zapcore.AddSync(&lumberjack.Logger{
 		// 日志名称
-		Filename: "logs/ninelaw-sign.log",
+		Filename: "ninelaw-sign.log",
 		// 日志大小限制，单位MB
 		MaxSize: 100,
 		// 历史日志文件保留天数
