@@ -8,12 +8,13 @@ import (
 	"math/rand"
 	"os"
 	"sort"
+	"strconv"
 	"strings"
 	"time"
 )
 
-// 生成九品签名
-func GenerateNinelawOpenAPISecurityParameters(keyType byte, timestamp string, random string) {
+// 生成九品验签参数
+func GenerateNinelawOpenAPISecurityParameters() {
 	// logger, _ := zap.NewProduction()
 	// defer logger.Sync()
 	// sugar := logger.Sugar()
@@ -61,41 +62,29 @@ func GenerateNinelawOpenAPISecurityParameters(keyType byte, timestamp string, ra
 	defer logger.Sync()
 
 	parameterSlice := make([]string, 4)
-	var typeDescription string
-	var appKey string
-	var securityKey string
-	switch keyType {
-	case 1:
-		typeDescription = NineLawHeaderKeys.TypeDescription()
-		appKey = NineLawHeaderKeys.AppKey()
-		securityKey = NineLawHeaderKeys.SecurityKey()
-	case 2:
-		typeDescription = ThunisoftNineLawFeignKeys.TypeDescription()
-		appKey = ThunisoftNineLawFeignKeys.AppKey()
-		securityKey = ThunisoftNineLawFeignKeys.SecurityKey()
-	case 3:
-		typeDescription = SaasNineLawFeignKeys.TypeDescription()
-		appKey = SaasNineLawFeignKeys.AppKey()
-		securityKey = SaasNineLawFeignKeys.SecurityKey()
-	}
-	parameterSlice = append(parameterSlice, appKey)
-	parameterSlice = append(parameterSlice, securityKey)
-	parameterSlice = append(parameterSlice, timestamp)
-	parameterSlice = append(parameterSlice, random)
-	sort.Strings(parameterSlice)
-	parameters := strings.Join(parameterSlice, "")
-	encryptedParameters := encryptionutils.EncryptWithSha256(parameters)
+	timestamp := strconv.FormatInt(time.Now().UnixMilli(), 10)
+	random := generateRandom(6)
 
-	sugar.Infof("Ninelaw OpenAPI Security Parameters: [%s]", typeDescription)
-	sugar.Infow("[01]", zap.String("appKey", appKey), zap.String("securityKey", securityKey))
-	sugar.Infow("[02]", zap.String("timestamp", timestamp))
-	sugar.Infow("[03]", zap.String("random", random))
-	sugar.Infow("[04]", zap.String("sign", encryptedParameters))
-	sugar.Info("======================================================================")
+	for _, n := range NineLawOpenApiKeysSlice {
+		parameterSlice = append(parameterSlice, n.AppKey())
+		parameterSlice = append(parameterSlice, n.SecurityKey())
+		parameterSlice = append(parameterSlice, timestamp)
+		parameterSlice = append(parameterSlice, random)
+		sort.Strings(parameterSlice)
+		parameters := strings.Join(parameterSlice, "")
+		encryptedParameters := encryptionutils.EncryptWithSha256(parameters)
+
+		sugar.Infof("Ninelaw OpenAPI Security Parameters: [%s]", n.TypeDescription())
+		sugar.Infow("[01]", zap.String("appKey", n.AppKey()), zap.String("securityKey", n.SecurityKey()))
+		sugar.Infow("[02]", zap.String("timestamp", timestamp))
+		sugar.Infow("[03]", zap.String("random", random))
+		sugar.Infow("[04]", zap.String("sign", encryptedParameters))
+		sugar.Info("======================================================================")
+	}
 }
 
 // 随机生成"英文字母、数字形式"的字符串
-func GenerateRandom(length int) string {
+func generateRandom(length int) string {
 	randomBase := "abcdefghijklmnopqrstuvwxyz0123456789"
 	var builder bytes.Buffer
 	rand.Seed(time.Now().Unix())

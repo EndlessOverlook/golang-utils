@@ -2,8 +2,6 @@ package main
 
 import (
 	"golang-utils/ninelaw"
-	"strconv"
-	"time"
 )
 
 // 验证包名是否可以带中横线和下划线
@@ -135,9 +133,8 @@ func main() {
 	// }
 	// time.Sleep(time.Second * 6)
 
-	ninelaw.GenerateNinelawOpenAPISecurityParameters(1, strconv.FormatInt(time.Now().UnixMilli(), 10), ninelaw.GenerateRandom(6))
-	ninelaw.GenerateNinelawOpenAPISecurityParameters(2, strconv.FormatInt(time.Now().UnixMilli(), 10), ninelaw.GenerateRandom(6))
-	ninelaw.GenerateNinelawOpenAPISecurityParameters(3, strconv.FormatInt(time.Now().UnixMilli(), 10), ninelaw.GenerateRandom(6))
+	ninelaw.GenerateNinelawOpenAPISecurityParameters()
+
 }
 
 // type Vec2 struct {
