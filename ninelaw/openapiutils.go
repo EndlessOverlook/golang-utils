@@ -61,11 +61,11 @@ func GenerateNinelawOpenAPISecurityParameters() {
 	sugar := logger.Sugar()
 	defer logger.Sync()
 
-	parameterSlice := make([]string, 4)
 	timestamp := strconv.FormatInt(time.Now().UnixMilli(), 10)
 	random := generateRandom(6)
 
 	for _, n := range NineLawOpenApiKeysSlice {
+		parameterSlice := make([]string, 4)
 		parameterSlice = append(parameterSlice, n.AppKey())
 		parameterSlice = append(parameterSlice, n.SecurityKey())
 		parameterSlice = append(parameterSlice, timestamp)
