@@ -33,5 +33,8 @@ func (k *NineLawOpenApiKeys) SetSecurityKey(securityKey string) {
 // 九品调用管理人接口时Header中需要指定的参数
 var NineLawHeaderKeys NineLawOpenApiKeys = NineLawOpenApiKeys{typeDescription: "NineLaw => PoChan-GLR", appKey: "vR2eN0hL3e", securityKey: "fV1tQ3uH3bJ1yP3cQ4tS4zY0gU7vE4pL"}
 
-// 管理人调用九品接口时Feign中需要指定的参数
-var NineLawFeignKeys NineLawOpenApiKeys = NineLawOpenApiKeys{typeDescription: "PoChan-GLR => NineLaw", appKey: "6Tzuo9wQ5O", securityKey: "Rx42VF95ZvILq7FtvVh8P1zTJOqWIoOW"}
+// 测试环境-管理人调用九品接口时Feign中需要指定的参数
+var ThunisoftNineLawFeignKeys NineLawOpenApiKeys = NineLawOpenApiKeys{typeDescription: "<Thunisoft> PoChan-GLR => NineLaw", appKey: "6Tzuo9wQ5O", securityKey: "Rx42VF95ZvILq7FtvVh8P1zTJOqWIoOW"}
+
+// SAAS环境-管理人调用九品接口时Feign中需要指定的参数
+var SaasNineLawFeignKeys NineLawOpenApiKeys = NineLawOpenApiKeys{typeDescription: "<SAAS> PoChan-GLR => NineLaw", appKey: "Lrrv3A5AHE", securityKey: "iTReOhTn9L3vlsjcugIGEMSiQldeCrdy"}

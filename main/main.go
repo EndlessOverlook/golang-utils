@@ -137,6 +137,7 @@ func main() {
 
 	ninelaw.GenerateNinelawOpenAPISecurityParameters(1, strconv.FormatInt(time.Now().UnixMilli(), 10), ninelaw.GenerateRandom(6))
 	ninelaw.GenerateNinelawOpenAPISecurityParameters(2, strconv.FormatInt(time.Now().UnixMilli(), 10), ninelaw.GenerateRandom(6))
+	ninelaw.GenerateNinelawOpenAPISecurityParameters(3, strconv.FormatInt(time.Now().UnixMilli(), 10), ninelaw.GenerateRandom(6))
 }
 
 // type Vec2 struct {

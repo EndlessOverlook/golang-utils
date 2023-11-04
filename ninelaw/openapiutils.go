@@ -70,9 +70,13 @@ func GenerateNinelawOpenAPISecurityParameters(keyType byte, timestamp string, ra
 		appKey = NineLawHeaderKeys.AppKey()
 		securityKey = NineLawHeaderKeys.SecurityKey()
 	case 2:
-		typeDescription = NineLawFeignKeys.TypeDescription()
-		appKey = NineLawFeignKeys.AppKey()
-		securityKey = NineLawFeignKeys.SecurityKey()
+		typeDescription = ThunisoftNineLawFeignKeys.TypeDescription()
+		appKey = ThunisoftNineLawFeignKeys.AppKey()
+		securityKey = ThunisoftNineLawFeignKeys.SecurityKey()
+	case 3:
+		typeDescription = SaasNineLawFeignKeys.TypeDescription()
+		appKey = SaasNineLawFeignKeys.AppKey()
+		securityKey = SaasNineLawFeignKeys.SecurityKey()
 	}
 	parameterSlice = append(parameterSlice, appKey)
 	parameterSlice = append(parameterSlice, securityKey)
