@@ -3,30 +3,33 @@ package ninelaw
 var NineLawOpenApiKeysSlice []NineLawOpenApiKeys = make([]NineLawOpenApiKeys, 0)
 
 func init() {
-	// NineLawHeaderKeys, 九品调用管理人接口时Header中需要指定的参数
-	var nineLawHeaderKeys NineLawOpenApiKeys = NineLawOpenApiKeys{keyType: 1, typeDescription: "NineLaw => PoChan-GLR", appKey: "vR2eN0hL3e", securityKey: "fV1tQ3uH3bJ1yP3cQ4tS4zY0gU7vE4pL"}
-	NineLawOpenApiKeysSlice = append(NineLawOpenApiKeysSlice, nineLawHeaderKeys)
-	// 测试环境-管理人调用九品接口时Feign中需要指定的参数
-	var thunisoftNineLawFeignKeys NineLawOpenApiKeys = NineLawOpenApiKeys{keyType: 2, typeDescription: "<Thunisoft> PoChan-GLR => NineLaw", appKey: "6Tzuo9wQ5O", securityKey: "Rx42VF95ZvILq7FtvVh8P1zTJOqWIoOW"}
+	// 测试环境-九品调用管理人接口时Header中需要指定的参数
+	var thunisoftNineLawHeaderKeys NineLawOpenApiKeys = NineLawOpenApiKeys{environment: "Thunisoft", typeDescription: "NineLaw => PoChan-GLR", appKey: "vR2eN0hL3e", securityKey: "fV1tQ3uH3bJ1yP3cQ4tS4zY0gU7vE4pL"}
+	NineLawOpenApiKeysSlice = append(NineLawOpenApiKeysSlice, thunisoftNineLawHeaderKeys)
+	// 测试环境-管理人调用九品接口时Feign客户端中需要指定的参数
+	var thunisoftNineLawFeignKeys NineLawOpenApiKeys = NineLawOpenApiKeys{environment: "Thunisoft", typeDescription: "PoChan-GLR => NineLaw", appKey: "6Tzuo9wQ5O", securityKey: "Rx42VF95ZvILq7FtvVh8P1zTJOqWIoOW"}
 	NineLawOpenApiKeysSlice = append(NineLawOpenApiKeysSlice, thunisoftNineLawFeignKeys)
-	// SAAS环境-管理人调用九品接口时Feign中需要指定的参数
-	var saasNineLawFeignKeys NineLawOpenApiKeys = NineLawOpenApiKeys{keyType: 3, typeDescription: "<SAAS> PoChan-GLR => NineLaw", appKey: "Lrrv3A5AHE", securityKey: "iTReOhTn9L3vlsjcugIGEMSiQldeCrdy"}
-	NineLawOpenApiKeysSlice = append(NineLawOpenApiKeysSlice, saasNineLawFeignKeys)
+	// 阿里云环境-九品调用管理人接口时Header中需要指定的参数
+	var aliyunNineLawHeaderKeys NineLawOpenApiKeys = NineLawOpenApiKeys{environment: "Thunisoft", typeDescription: "NineLaw => PoChan-GLR", appKey: "vR2eN0hL3e", securityKey: "fV1tQ3uH3bJ1yP3cQ4tS4zY0gU7vE4pL"}
+	NineLawOpenApiKeysSlice = append(NineLawOpenApiKeysSlice, aliyunNineLawHeaderKeys)
+	// 阿里云环境-管理人调用九品接口时Feign中需要指定的参数
+	var aliyunNineLawFeignKeys NineLawOpenApiKeys = NineLawOpenApiKeys{environment: "Aliyun", typeDescription: "PoChan-GLR => NineLaw", appKey: "Lrrv3A5AHE", securityKey: "iTReOhTn9L3vlsjcugIGEMSiQldeCrdy"}
+	NineLawOpenApiKeysSlice = append(NineLawOpenApiKeysSlice, aliyunNineLawFeignKeys)
 }
 
 type NineLawOpenApiKeys struct {
-	keyType         int    // 类型
+	environment     string // 环境标识
 	typeDescription string // 类型描述
 	appKey          string // appKey
 	securityKey     string // securityKey
 }
 
-func (k *NineLawOpenApiKeys) KeyType() int {
-	return k.keyType
+func (k *NineLawOpenApiKeys) Environment() string {
+	return k.environment
 }
 
-func (k *NineLawOpenApiKeys) SetKeyType(keyType int) {
-	k.keyType = keyType
+func (k *NineLawOpenApiKeys) SetEnvironment(environment string) {
+	k.environment = environment
 }
 
 func (k *NineLawOpenApiKeys) TypeDescription() string {
