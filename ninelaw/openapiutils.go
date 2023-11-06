@@ -75,10 +75,11 @@ func GenerateNinelawOpenAPISecurityParameters() {
 		encryptedParameters := encryptionutils.EncryptWithSha256(parameters)
 
 		sugar.Infof("Ninelaw OpenAPI Security Parameters: Environment: [%s], Description: [%s]", n.Environment(), n.TypeDescription())
-		sugar.Infow("[01]", zap.String("appKey", n.AppKey()), zap.String("securityKey", n.SecurityKey()))
-		sugar.Infow("[02]", zap.String("timestamp", timestamp))
-		sugar.Infow("[03]", zap.String("random", random))
-		sugar.Infow("[04]", zap.String("sign", encryptedParameters))
+		sugar.Infow("[01]", zap.String("appKey", n.AppKey()))
+		sugar.Infow("[02]", zap.String("securityKey", n.SecurityKey()))
+		sugar.Infow("[03]", zap.String("timestamp", timestamp))
+		sugar.Infow("[04]", zap.String("random", random))
+		sugar.Infow("[05]", zap.String("sign", encryptedParameters))
 		sugar.Info("======================================================================")
 	}
 }
