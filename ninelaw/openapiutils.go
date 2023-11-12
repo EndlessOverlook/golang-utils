@@ -64,7 +64,7 @@ func GenerateNinelawOpenAPISecurityParameters() {
 	timestamp := strconv.FormatInt(time.Now().UnixMilli(), 10)
 	random := generateRandom(6)
 
-	for _, n := range NineLawOpenApiKeysSlice {
+	for _, n := range OpenApiKeysSlice {
 		parameterSlice := make([]string, 4)
 		parameterSlice = append(parameterSlice, n.AppKey())
 		parameterSlice = append(parameterSlice, n.SecurityKey())
