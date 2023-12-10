@@ -1,7 +1,6 @@
 package main
 
 import (
-	"golang-utils/ninelaw"
 	"golang-utils/thunisoft/workload"
 )
 
@@ -134,7 +133,7 @@ func main() {
 	// }
 	// time.Sleep(time.Second * 6)
 
-	ninelaw.GenerateNinelawOpenAPISecurityParameters()
+	// ninelaw.GenerateNinelawOpenAPISecurityParameters()
 
 	workload.CalculateWorkloadDistribution(23442.24)
 }

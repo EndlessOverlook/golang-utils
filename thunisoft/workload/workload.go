@@ -34,5 +34,6 @@ func CalculateWorkloadDistribution(totalWorkload float64) {
 		}
 	}
 
-	fmt.Printf("目标工作量值为%.2f, 最接近的结果为%.2f*%.f(P5) + %.2f*%.f(P4) + %.2f*%.f(P3) + %.2f*%.f(P2) = %.2f\n", totalWorkload, p5DeveloperCostPerDay, bestP5DeveloperDayCount, p4DeveloperCostPerDay, bestP4DeveloperDayCount, p3DeveloperCostPerDay, bestP3DeveloperDayCount, p2DeveloperCostPerDay, bestP2DeveloperDayCount, p5DeveloperCostPerDay*bestP5DeveloperDayCount+p4DeveloperCostPerDay*bestP4DeveloperDayCount+p3DeveloperCostPerDay*bestP3DeveloperDayCount+p2DeveloperCostPerDay*bestP2DeveloperDayCount)
+	fmt.Println("=====[工作量分配计算]=====")
+	fmt.Printf("目标工作量值为%.2f, 最接近的结果为%.2f * %.f(P5) + %.2f * %.f(P4) + %.2f * %.f(P3) + %.2f * %.f(P2) = %.2f\n", totalWorkload, p5DeveloperCostPerDay, bestP5DeveloperDayCount, p4DeveloperCostPerDay, bestP4DeveloperDayCount, p3DeveloperCostPerDay, bestP3DeveloperDayCount, p2DeveloperCostPerDay, bestP2DeveloperDayCount, p5DeveloperCostPerDay*bestP5DeveloperDayCount+p4DeveloperCostPerDay*bestP4DeveloperDayCount+p3DeveloperCostPerDay*bestP3DeveloperDayCount+p2DeveloperCostPerDay*bestP2DeveloperDayCount)
 }
