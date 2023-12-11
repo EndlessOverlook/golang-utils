@@ -1,8 +1,6 @@
 package main
 
-import (
-	"golang-utils/thunisoft/workload"
-)
+import "golang-utils/thunisoft/workload"
 
 // 验证包名是否可以带中横线和下划线
 // func verifyGolangPackageName() {
@@ -135,7 +133,9 @@ func main() {
 
 	// ninelaw.GenerateNinelawOpenAPISecurityParameters()
 
-	workload.CalculateWorkloadDistribution(23442.24)
+	// workload.CalculateProximalLowerWorkloadDistribution(23442.24)
+	// workload.CalculateProximalHigherWorkloadDistribution(3465.97)
+	workload.CalculateProximalHigherWorkloadDistribution(13935.95)
 }
 
 // type Vec2 struct {
