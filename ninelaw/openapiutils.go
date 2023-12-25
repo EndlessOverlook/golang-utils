@@ -80,6 +80,7 @@ func GenerateNinelawOpenAPISecurityParameters() {
 		sugar.Infow("[03]", zap.String("timestamp", timestamp))
 		sugar.Infow("[04]", zap.String("random", random))
 		sugar.Infow("[05]", zap.String("sign", encryptedParameters))
+		sugar.Infof("[Postman Bulk Edit Parameters]\nappKey:%s\ntimestamp:%s\nrandom:%s\nsign:%s", n.AppKey(), timestamp, random, encryptedParameters)
 		sugar.Info("======================================================================")
 	}
 }
