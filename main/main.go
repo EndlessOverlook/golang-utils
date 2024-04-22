@@ -1,6 +1,6 @@
 package main
 
-import "golang-utils/ninelaw"
+import "golang-utils/thunisoft/workload"
 
 // 验证包名是否可以带中横线和下划线
 // func verifyGolangPackageName() {
@@ -131,10 +131,10 @@ func main() {
 	// }
 	// time.Sleep(time.Second * 6)
 
-	ninelaw.GenerateNinelawOpenAPISecurityParameters()
+	// ninelaw.GenerateNinelawOpenAPISecurityParameters()
 
 	// workload.CalculateProximalLowerWorkloadDistribution(23442.24)
-	// workload.CalculateProximalHigherWorkloadDistribution(3465.97)
+	workload.CalculateProximalHigherWorkloadDistribution(34934)
 	// workload.CalculateProximalHigherWorkloadDistribution(13935.95)
 }
 
