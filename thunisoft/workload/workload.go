@@ -44,8 +44,9 @@ func CalculateProximalLowerWorkloadDistribution(totalWorkload float64) {
 
 	fmt.Println("=====[工作量分配计算，计算<小于且最接近>目标值的分配方式-开始]=====")
 	fmt.Printf("目标工作量值为[%.2f]\n", totalWorkload)
-	fmt.Printf("<小于且最接近>最接近的结果为[%.2f] = %.2f(P5) * %d + %.2f(P4) * %d + %.2f(P3) * %d + %.2f(P2) * %d\n", bestWorkload, p5DeveloperCostPerDay, proximalP5DeveloperDayCount, p4DeveloperCostPerDay, proximalP4DeveloperDayCount, p3DeveloperCostPerDay, proximalP3DeveloperDayCount, p2DeveloperCostPerDay, proximalP2DeveloperDayCount)
+	fmt.Printf("<小于且最接近>最接近的结果为[%.2f] = %.2f(P5) * [<%d>] + %.2f(P4) * [<%d>] + %.2f(P3) * [<%d>] + %.2f(P2) * [<%d>]\n", bestWorkload, p5DeveloperCostPerDay, proximalP5DeveloperDayCount, p4DeveloperCostPerDay, proximalP4DeveloperDayCount, p3DeveloperCostPerDay, proximalP3DeveloperDayCount, p2DeveloperCostPerDay, proximalP2DeveloperDayCount)
 	fmt.Println("=====[工作量分配计算，计算<小于且最接近>目标值的分配方式-结束]=====")
+	fmt.Println()
 }
 
 // CalculateProximalHigherWorkloadDistribution 计算工作量分配, 最接近目标值但大于目标值
@@ -58,10 +59,12 @@ func CalculateProximalHigherWorkloadDistribution(totalWorkload float64) {
 			for k := 0; k <= int(totalWorkload/p3DeveloperCostPerDay); k++ {
 				for l := 0; l <= int(totalWorkload/p2DeveloperCostPerDay); l++ {
 					tempWorkload := p5DeveloperCostPerDay*float64(i) + p4DeveloperCostPerDay*float64(j) + p3DeveloperCostPerDay*float64(k) + p2DeveloperCostPerDay*float64(l)
-					workloadDiff := math.Abs(totalWorkload - tempWorkload)
-					if workloadDiff < proximalWorkload {
-						proximalWorkload = workloadDiff
-						proximalP5DeveloperDayCount, proximalP4DeveloperDayCount, proximalP3DeveloperDayCount, proximalP2DeveloperDayCount = i, j, k, l
+					if tempWorkload > totalWorkload {
+						workloadDiff := tempWorkload - totalWorkload
+						if workloadDiff < proximalWorkload {
+							proximalWorkload = workloadDiff
+							proximalP5DeveloperDayCount, proximalP4DeveloperDayCount, proximalP3DeveloperDayCount, proximalP2DeveloperDayCount = i, j, k, l
+						}
 					}
 				}
 			}
@@ -72,6 +75,7 @@ func CalculateProximalHigherWorkloadDistribution(totalWorkload float64) {
 
 	fmt.Println("=====[工作量分配计算，计算<大于且最接近>目标值的分配方式-开始]=====")
 	fmt.Printf("目标工作量值为[%.2f]\n", totalWorkload)
-	fmt.Printf("<大于且最接近>最接近的结果为[%.2f] = %.2f(P5) * %d + %.2f(P4) * %d + %.2f(P3) * %d + %.2f(P2) * %d\n", bestWorkload, p5DeveloperCostPerDay, proximalP5DeveloperDayCount, p4DeveloperCostPerDay, proximalP4DeveloperDayCount, p3DeveloperCostPerDay, proximalP3DeveloperDayCount, p2DeveloperCostPerDay, proximalP2DeveloperDayCount)
+	fmt.Printf("<大于且最接近>最接近的结果为[%.2f] = %.2f(P5) * [<%d>] + %.2f(P4) * [<%d>] + %.2f(P3) * [<%d>] + %.2f(P2) * [<%d>]\n", bestWorkload, p5DeveloperCostPerDay, proximalP5DeveloperDayCount, p4DeveloperCostPerDay, proximalP4DeveloperDayCount, p3DeveloperCostPerDay, proximalP3DeveloperDayCount, p2DeveloperCostPerDay, proximalP2DeveloperDayCount)
 	fmt.Println("=====[工作量分配计算，计算<大于且最接近>目标值的分配方式-结束]=====")
+	fmt.Println()
 }

@@ -1,5 +1,7 @@
 package main
 
+import "golang-utils/thunisoft/workload"
+
 // 验证包名是否可以带中横线和下划线
 // func verifyGolangPackageName() {
 //	fmt.Println("Current Year is : " + strconv.Itoa(timeutils.GetYear()))
@@ -129,8 +131,8 @@ func main() {
 	// }
 	// time.Sleep(time.Second * 6)
 
-	// workload.CalculateProximalLowerWorkloadDistribution(23442.24)
-	// workload.CalculateProximalHigherWorkloadDistribution(34934)
+	workload.CalculateProximalLowerWorkloadDistribution(2719.24)
+	workload.CalculateProximalHigherWorkloadDistribution(2719.24)
 	// workload.CalculateProximalHigherWorkloadDistribution(13935.95)
 }
 
