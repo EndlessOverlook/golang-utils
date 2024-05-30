@@ -10,11 +10,13 @@ func TestGenerateRSAKeyPair(t *testing.T) {
 }
 
 func TestEncryptWithRSAPublicKeyAndEncodeWithBase64(t *testing.T) {
-	encrypted := EncryptWithRSAPublicKeyAndEncodeWithBase64("Hello World!")
+	originals := "Hello World!李凯伦$#%"
+	fmt.Println("加密前原始内容:\n" + originals)
+	encrypted := EncryptWithRSAPublicKeyAndEncodeWithBase64(originals)
 	fmt.Println("RSA公钥加密后:\n" + encrypted)
 	decrypted := DecodeWithBase64AndDecryptWithRSAPrivateKey(encrypted)
 	fmt.Println("RSA私钥钥解密后:\n" + decrypted)
-	if decrypted != "Hello World!" {
+	if decrypted != originals {
 		t.Errorf("Hello World!使用RSA加密再解密后数据不一致!")
 	}
 }
