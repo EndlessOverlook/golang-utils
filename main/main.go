@@ -131,8 +131,8 @@ func main() {
 	// }
 	// time.Sleep(time.Second * 6)
 
-	workload.CalculateProximalLowerWorkloadDistribution(2719.24)
-	workload.CalculateProximalHigherWorkloadDistribution(2719.24)
+	workload.CalculateProximalLowerWorkloadDistribution(12976.55)
+	// workload.CalculateProximalHigherWorkloadDistribution(2719.24)
 	// workload.CalculateProximalHigherWorkloadDistribution(13935.95)
 }
 

@@ -12,10 +12,16 @@ const (
 	// p3DeveloperCostPerDay = 899.72
 	// p2DeveloperCostPerDay = 767.17
 
-	p5DeveloperCostPerDay = 1551.10
-	p4DeveloperCostPerDay = 1156.80
-	p3DeveloperCostPerDay = 835.70
-	p2DeveloperCostPerDay = 695.60
+	// 2025-10-21 更新
+	//p5DeveloperCostPerDay = 1551.10
+	//p4DeveloperCostPerDay = 1156.80
+	//p3DeveloperCostPerDay = 835.70
+	//p2DeveloperCostPerDay = 695.60
+
+	p5DeveloperCostPerDay = 1386.9
+	p4DeveloperCostPerDay = 1048.05
+	p3DeveloperCostPerDay = 799.13
+	p2DeveloperCostPerDay = 607.03
 )
 
 // CalculateProximalLowerWorkloadDistribution 计算工作量分配, 最接近目标值但小于目标值
